@@ -1,0 +1,19 @@
+{
+  "name": "aws-transcribe-transcript-ts",
+  "version": "0.0.0",
+  "description": "A typescript port of purdy/aws-transcribe-transcript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/willpublicmedia/aws-transcribe-transcript-ts.git"
+  },
+  "author": "Illinois Public Media",
+  "license": "NCSA",
+  "bugs": {
+    "url": "https://github.com/willpublicmedia/aws-transcribe-transcript-ts/issues"
+  },
+  "homepage": "https://github.com/willpublicmedia/aws-transcribe-transcript-ts#readme"
+}
