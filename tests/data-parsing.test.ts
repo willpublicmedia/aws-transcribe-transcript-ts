@@ -3,8 +3,8 @@ import * as path from 'path';
 import * as fs from 'fs';
 import * as fsPromises from 'fs/promises';
 import { TranscribeJobOutput, TranscribeJobResult } from '../src/types/transcribe-job-output';
-const dataDir = path.join(__dirname, 'data');
 
+const dataDir = path.join(__dirname, 'data');
 const filenames = [
     'WILLnewscast-transcript.txt',
 ];

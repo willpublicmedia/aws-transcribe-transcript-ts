@@ -1,5 +1,7 @@
+import { TranscribeJobOutput } from "./types/transcribe-job-output";
+
 export default class TranscriptFormatter {
-    public format(data: JSON): void {
+    public format(data: TranscribeJobOutput): void {
         console.debug('check if speaker labels present');
         if ('speaker_labels' in data) {
             console.debug('get speaker labels');
@@ -13,5 +15,6 @@ export default class TranscriptFormatter {
             console.debug('get raw transcript');
         }
 
+        throw new Error("not implemented");
     }
 }
