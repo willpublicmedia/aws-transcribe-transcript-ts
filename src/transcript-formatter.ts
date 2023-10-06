@@ -1,8 +1,5 @@
 export default class TranscriptFormatter {
-    public format(path: string): void {
-        console.debug('read file as json');
-        const data: JSON = JSON.parse('');
-
+    public format(data: JSON): void {
         console.debug('check if speaker labels present');
         if ('speaker_labels' in data) {
             console.debug('get speaker labels');
