@@ -6,7 +6,7 @@ import { TranscribeJobOutput } from '../src/types/transcribe-job-output';
 
 const dataDir = path.join(__dirname, 'data');
 const filenames = [
-    'WILLnewscast-transcript.txt',
+    'newscast-transcript.no-speakers.json',
 ];
 
 test('formatter processes data correctly', async () => {
