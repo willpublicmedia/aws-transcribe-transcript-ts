@@ -10,15 +10,43 @@ export default class TranscriptFormatter {
             const labels = results.speaker_labels?.segments;
             const speaker_start_times: { start_time: string, label: string }[] = [];
 
+            console.debug('foreach speaker label get segments');
             labels?.forEach(label => {
                 label.items.forEach(item => {
                     speaker_start_times.push({ start_time: item.start_time, label: item.speaker_label });
                 });
             });
 
-            console.debug('foreach speaker label get segments');
             console.debug('foreach segment get items');
-            console.debug('foreach item get start_time, label speaker')
+            const items = results.items;
+            const lines = [];
+            let line = ''
+            let time = 0
+            let speaker = 'null'
+            let i = 0
+
+            items.forEach(item => {
+                i = i + 1;
+                const content = item.alternatives[0].content;
+
+                console.debug('foreach item get start_time, label speaker')
+            });
+            // for item in items:
+            // 	i=i+1
+            // 	content = item['alternatives'][0]['content']
+            // 	if item.get('start_time'):
+            // 		current_speaker=speaker_start_times[item['start_time']]
+            // 	elif item['type'] == 'punctuation':
+            // 		line = line+content
+            // 	if current_speaker != speaker:
+            // 		if speaker:
+            // 			lines.append({'speaker':speaker, 'line':line, 'time':time})
+            // 		line=content
+            // 		speaker=current_speaker
+            // 		time=item['start_time']
+            // 	elif item['type'] != 'punctuation':
+            // 		line = line + ' ' + content
+            
             console.debug('foreach item get start time, get content or punctuation')
             console.debug('sort lines')
         } else {
