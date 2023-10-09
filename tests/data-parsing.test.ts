@@ -26,7 +26,7 @@ test('parsed types are correct', () => {
         expect(parsed).toHaveProperty('results');
         expect(parsed).toHaveProperty('status');
 
-        const results: TranscribeJobResult[] = parsed.results;
+        const results: TranscribeJobResult = parsed.results;
         expect(results).toHaveProperty('transcripts');
         expect(results).toHaveProperty('items');
     });
