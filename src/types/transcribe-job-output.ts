@@ -9,7 +9,7 @@ export interface TranscribeJobResult {
     transcripts: {
         transcript: string
     }[],
-    speaker_labels: undefined | {
+    speaker_labels?: undefined | {
         segments: {
             start_time: string,
             end_time: string,
