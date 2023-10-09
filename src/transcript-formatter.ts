@@ -77,4 +77,8 @@ export default class TranscriptFormatter {
 
         throw new Error("not implemented");
     }
+
+    public write(formatted: any, outfile: string): void {
+        throw new Error("not implemented");
+    }
 }
