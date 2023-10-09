@@ -2,7 +2,7 @@ import { TranscribeJobOutput } from "./types/transcribe-job-output";
 
 export default class TranscriptFormatter {
     public format(data: TranscribeJobOutput): string {
-        const results = data.results[0];
+        const results = data.results;
         const speaker_start_times = {};
         const lines = [];
         const line = '';
@@ -19,7 +19,7 @@ export default class TranscriptFormatter {
     }
 
     public format_py(data: TranscribeJobOutput): void {
-        const results = data.results[0];
+        const results = data.results;
 
         console.debug('check if speaker labels present');
         if ('speaker_labels' in results) {
