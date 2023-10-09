@@ -22,12 +22,12 @@ export interface TranscribeJobResult {
         }[]
     }
     items: {
-        start_time: string,
-        end_time: string,
+        start_time?: string,
+        end_time?: string,
         alternatives: {
             confidence: string,
             content: string
         }[],
-        type: string
+        type?: string
     }[]
 }
