@@ -1,7 +1,24 @@
 import { TranscribeJobOutput } from "./types/transcribe-job-output";
 
 export default class TranscriptFormatter {
-    public format(data: TranscribeJobOutput): void {
+    public format(data: TranscribeJobOutput): string {
+        const results = data.results[0];
+        const speaker_start_times = {};
+        const lines = [];
+        const line = '';
+        const time = 0;
+        const speaker = 'spk_1';
+        const recent_speaker = 'spk_1';
+
+        if ('speaker_labels' in results && results.speaker_labels !== undefined) {
+            throw new Error("not implemented");
+        } else {
+            const transcript = results.transcripts[0].transcript;
+            return transcript;
+        }
+    }
+
+    public format_py(data: TranscribeJobOutput): void {
         const results = data.results[0];
 
         console.debug('check if speaker labels present');
