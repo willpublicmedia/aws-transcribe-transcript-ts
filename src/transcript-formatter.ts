@@ -11,6 +11,18 @@ export default class TranscriptFormatter {
         const recent_speaker = 'spk_1';
 
         if ('speaker_labels' in results && results.speaker_labels !== undefined) {
+            const speaker_start_times: { start_time: string, label: string }[] = [];
+
+            const labels = results.speaker_labels?.segments;
+            labels.forEach(label => {
+                label.items.forEach(item => {
+                    speaker_start_times.push({
+                        start_time: item.start_time,
+                        label: item.speaker_label ?? 'Unknown'
+                    });
+                });
+            });
+
             throw new Error("not implemented");
         } else {
             const transcript = results.transcripts[0].transcript;
