@@ -1,7 +1,7 @@
 export interface TranscribeJobOutput {
     jobName: string,
     accountId: string,
-    results: TranscribeJobResult[],
+    results: TranscribeJobResult,
     status: string
 }
 
