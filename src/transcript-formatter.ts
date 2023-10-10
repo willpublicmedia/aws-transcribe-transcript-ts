@@ -47,7 +47,7 @@ export default class TranscriptFormatter {
                         time = item.start_time as string;
                     }
                 } else if (item.type === 'punctuation') {
-                    throw new Error("not implemented");
+                    line = line + item.alternatives[0].content;
                 }
             }
             throw new Error("not implemented");
