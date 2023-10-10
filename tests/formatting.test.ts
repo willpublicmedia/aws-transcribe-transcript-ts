@@ -24,3 +24,26 @@ test('formatter processes data correctly', async () => {
         )
     )
 });
+
+test('first formatted line should not be empty', async () => {
+    await Promise.all(
+        filenames.map(
+            async name => {
+                const file = path.join(dataDir, name);
+                const content = await fs.readFile(file, { encoding: 'utf-8' });
+                const data: TranscribeJobOutput = await JSON.parse(content);
+                const formatter = new TranscriptFormatter();
+                const transcript = formatter.format(data);
+
+                const lines = transcript.split('\n');
+                const firstLine = lines[0];
+
+                const expectedEmpty = '[0] spk_1: ,'
+                const actualEmpty = firstLine.startsWith(expectedEmpty);
+
+                expect(lines).toBeGreaterThan(1);
+                expect(actualEmpty).toBe(false);
+            }
+        )
+    )
+});
