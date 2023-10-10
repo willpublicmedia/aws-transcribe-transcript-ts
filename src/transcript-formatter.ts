@@ -50,7 +50,9 @@ export default class TranscriptFormatter {
                     line = line + item.alternatives[0].content;
                 }
             }
-            throw new Error("not implemented");
+
+            lines.push({ speaker: speaker, line: line, time: time });
+            const sorted_lines = lines.sort(l => Date.parse(l.time));
         } else {
             const transcript = results.transcripts[0].transcript;
             return transcript;
