@@ -3,7 +3,7 @@ import { TranscribeJobOutput } from "./types/transcribe-job-output";
 export default class TranscriptFormatter {
     public format(data: TranscribeJobOutput): string {
         const results = data.results;
-        const speaker_start_times = {};
+        let speaker_start_times: { start_time: string, label: string }[] = [];
         let lines = [];
         let line = '';
         let time = '0';
