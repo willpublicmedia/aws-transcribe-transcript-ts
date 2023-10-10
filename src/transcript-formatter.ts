@@ -38,10 +38,8 @@ export default class TranscriptFormatter {
                         }
 
                         line = line + ' ' + alt_content; // append to content and repeat
-                        console.debug(line)
                     } else { // new speaker
                         lines.push({ speaker: recent_speaker, line: line, time: time });
-                        console.debug(`[${time}] ${recent_speaker}: ${line}`);
                         recent_speaker = speaker;
                         line = item.alternatives[0].content;
                         time = item.start_time as string;
