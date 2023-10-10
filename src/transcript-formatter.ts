@@ -64,8 +64,4 @@ export default class TranscriptFormatter {
             return transcript;
         }
     }
-
-    public write(formatted: any, outfile: string): void {
-        throw new Error("not implemented");
-    }
 }
