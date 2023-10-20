@@ -1,21 +1,16 @@
 import { test, expect } from '@jest/globals';
-import * as path from 'path';
 import * as fs from 'fs/promises';
 import TranscriptFormatter from '../src/transcript-formatter';
 import { TranscribeJobOutput } from '../src/types/transcribe-job-output';
+import DataBuilder from './data-builder';
 
-const dataDir = path.join(__dirname, 'data');
-const filenames = [
-    'newscast-transcript.no-speakers.json',
-    'newscast-transcript.speakers.json'
-];
-
-test('formatter processes data correctly', async () => {
+test('formatter completes data processing', async () => {
+    const builder = new DataBuilder();
+    const items = builder.GenerateTestData();
     await Promise.all(
-        filenames.map(
-            async name => {
-                const file = path.join(dataDir, name);
-                const content = await fs.readFile(file, { encoding: 'utf-8' });
+        items.map(
+            async item => {
+                const content = await fs.readFile(item.file, { encoding: 'utf-8' });
                 const data: TranscribeJobOutput = await JSON.parse(content);
                 const formatter = new TranscriptFormatter();
 
@@ -26,11 +21,12 @@ test('formatter processes data correctly', async () => {
 });
 
 test('first formatted line should not be empty', async () => {
+    const builder = new DataBuilder();
+    const items = builder.GenerateTestData();
     await Promise.all(
-        filenames.map(
-            async name => {
-                const file = path.join(dataDir, name);
-                const content = await fs.readFile(file, { encoding: 'utf-8' });
+        items.map(
+            async item => {
+                const content = await fs.readFile(item.file, { encoding: 'utf-8' });
                 const data: TranscribeJobOutput = await JSON.parse(content);
                 const formatter = new TranscriptFormatter();
                 const transcript = formatter.format(data);
@@ -41,7 +37,7 @@ test('first formatted line should not be empty', async () => {
                 const expectedEmpty = '[0] spk_1: ,'
                 const actualEmpty = firstLine.startsWith(expectedEmpty);
 
-                expect(lines).toBeGreaterThan(1);
+                expect(lines.length).toBeGreaterThanOrEqual(item.minimumLines);
                 expect(actualEmpty).toBe(false);
             }
         )
