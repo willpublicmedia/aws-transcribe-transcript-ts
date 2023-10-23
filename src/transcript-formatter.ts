@@ -53,7 +53,8 @@ export default class TranscriptFormatter {
             const sorted_lines = lines.sort(l => Date.parse(l.time));
 
             const formatted = sorted_lines.map(item => {
-                return `[${item.time}] ${item.speaker}: ${item.line}`;
+                const time = this.convertTimestamp(item.time);
+                return `[${time}] ${item.speaker}: ${item.line}`;
             }).join('\n');
 
             return formatted;
