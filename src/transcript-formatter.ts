@@ -3,15 +3,14 @@ import { TranscribeJobOutput } from "./types/transcribe-job-output";
 export default class TranscriptFormatter {
     public format(data: TranscribeJobOutput): string {
         const results = data.results;
-        let speaker_start_times: { start_time: string, label: string }[] = [];
         let lines = [];
         let line = '';
         let time = '0';
-        let speaker = 'spk_1';
-        let recent_speaker = 'spk_1';
 
         if ('speaker_labels' in results && results.speaker_labels !== undefined) {
             const speaker_start_times: { start_time: string, label: string }[] = [];
+            let speaker = 'spk_1';
+            let recent_speaker = 'spk_1';
 
             const labels = results.speaker_labels?.segments;
             labels.forEach(label => {
