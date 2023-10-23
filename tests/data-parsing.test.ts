@@ -4,6 +4,9 @@ import { TranscribeJobOutput, TranscribeJobResult } from '../src/types/transcrib
 import DataBuilder from './data-builder';
 import TranscriptFormatter from '../src/transcript-formatter';
 
+/**
+ * @internal
+ */
 test('parsed types are correct', async () => {
     const builder = new DataBuilder();
     const items = builder.GenerateTestData();
@@ -24,6 +27,9 @@ test('parsed types are correct', async () => {
     );
 });
 
+/**
+ * @internal
+ */
 test('account ID has been anonymized', async () => {
     const builder = new DataBuilder();
     const items = builder.GenerateTestData();
@@ -38,6 +44,9 @@ test('account ID has been anonymized', async () => {
     );
 });
 
+/**
+ * @internal
+ */
 test('formatter generates timestamps from seconds', () => {
     const data: { in: string, expected: string }[] = [
         { in: '0', expected: '00:00:00' },

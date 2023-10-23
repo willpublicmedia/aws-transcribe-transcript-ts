@@ -1,10 +1,16 @@
 import * as path from 'path';
 
+/**
+ * @internal
+ */
 export interface TestData {
     file: string;
     hasSpeakers: boolean
 }
 
+/**
+ * @internal
+ */
 export default class DataBuilder {
     private readonly dataDir = path.join(__dirname, 'data');
 

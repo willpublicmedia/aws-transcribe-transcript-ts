@@ -4,6 +4,9 @@ import TranscriptFormatter from '../src/transcript-formatter';
 import { TranscribeJobOutput } from '../src/types/transcribe-job-output';
 import DataBuilder from './data-builder';
 
+/**
+ * @internal
+ */
 test('formatter completes data processing', async () => {
     const builder = new DataBuilder();
     const items = builder.GenerateTestData();
@@ -20,6 +23,9 @@ test('formatter completes data processing', async () => {
     )
 });
 
+/**
+ * @internal
+ */
 test('formatter splits on speakers', async () => {
     const builder = new DataBuilder();
     const items = builder.GenerateTestData();
