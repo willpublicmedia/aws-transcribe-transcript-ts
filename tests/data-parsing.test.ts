@@ -2,6 +2,7 @@ import { test, expect } from '@jest/globals';
 import * as fsPromises from 'fs/promises';
 import { TranscribeJobOutput, TranscribeJobResult } from '../src/types/transcribe-job-output';
 import DataBuilder from './data-builder';
+import TranscriptFormatter from '../src/transcript-formatter';
 
 test('parsed types are correct', async () => {
     const builder = new DataBuilder();
@@ -35,4 +36,20 @@ test('account ID has been anonymized', async () => {
             expect(actual).toBe(expected);
         })
     );
+});
+
+test('formatter generates timestamps from seconds', () => {
+    const data: { in: string, expected: string }[] = [
+        { in: '0', expected: '00:00:00' },
+        { in: '60', expected: '00:01:00' },
+        { in: '120', expected: '00:02:00' },
+        { in: '5400', expected: '01:30:00' }
+    ];
+
+    const formatter = new TranscriptFormatter();
+
+    data.map(item => {
+        const actual = formatter.convertTimestamp(item.in);
+        expect(actual).toBe(item.expected);
+    });
 });

@@ -62,4 +62,12 @@ export default class TranscriptFormatter {
             return transcript;
         }
     }
+
+    public convertTimestamp(delta: string): string {
+        const seconds = Number(delta);
+        let date = new Date(0);
+        date.setSeconds(seconds);
+        const timestamp = date.toISOString().substring(11, 19);
+        return timestamp;
+    }
 }
