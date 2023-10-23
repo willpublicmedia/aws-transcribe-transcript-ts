@@ -10,7 +10,8 @@ export default class DataBuilder {
 
     private testData: TestData[] = [
         { file: path.join(this.dataDir, 'newscast-transcript.no-speakers.json'), hasSpeakers: false },
-        { file: path.join(this.dataDir, 'newscast-transcript.speakers.json'), hasSpeakers: true }
+        { file: path.join(this.dataDir, 'newscast-transcript.speakers.json'), hasSpeakers: true },
+        { file: path.join(this.dataDir, 'newscast-transcript.2023-10-23.0704.speakers.json'), hasSpeakers: true }
     ]
 
     public GenerateTestData(): TestData[] {
