@@ -4,6 +4,7 @@
   "description": "A typescript port of purdy/aws-transcribe-transcript",
   "main": "transcript-formatter.js",
   "scripts": {
+    "clean": "rm -rf ./dist",
     "test": "jest"
   },
   "repository": {
