@@ -13,15 +13,7 @@ export default class TranscriptFormatter {
             let speaker = labels[0].speaker_label ?? 'spk_0';
             let recent_speaker = speaker;
 
-            const speaker_start_times: { start_time: string, label: string }[] = [];
-            labels.forEach(label => {
-                label.items.forEach(item => {
-                    speaker_start_times.push({
-                        start_time: item.start_time,
-                        label: item.speaker_label ?? 'Anon'
-                    });
-                });
-            });
+            const speaker_start_times: { start_time: string, label: string }[] = this.findSpeakerStartTimes(labels);
 
             const items = results.items;
             for (let i = 0; i < items.length; i++) {
@@ -70,5 +62,19 @@ export default class TranscriptFormatter {
         date.setSeconds(seconds);
         const timestamp = date.toISOString().substring(11, 19);
         return timestamp;
+    }
+
+    private findSpeakerStartTimes(labels: { start_time: string, end_time: string, speaker_label: string, items: { speaker_label: string, start_time: string, end_time: string }[] }[]): { start_time: string, label: string }[] {
+        const speaker_start_times: { start_time: string, label: string }[] = [];
+        labels.forEach(label => {
+            label.items.forEach(item => {
+                speaker_start_times.push({
+                    start_time: item.start_time,
+                    label: item.speaker_label ?? 'Anon'
+                });
+            });
+        });
+
+        return speaker_start_times;
     }
 }
