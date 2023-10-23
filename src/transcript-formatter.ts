@@ -54,7 +54,7 @@ export default class TranscriptFormatter {
 
             const formatted = sorted_lines.map(item => {
                 return `[${item.time}] ${item.speaker}: ${item.line}`;
-            }).join();
+            }).join('\n');
 
             return formatted;
         } else {

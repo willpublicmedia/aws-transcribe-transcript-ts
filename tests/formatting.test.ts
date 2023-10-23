@@ -34,7 +34,7 @@ test('formatter splits on speakers', async () => {
                 const lines = transcript.split(/\r?\n|\r|\n/g);
                 const firstline = lines[0];
 
-                const expectedEmpty = '[0] spk_1: ,'
+                const expectedEmpty = '[0] spk_1: '
 
                 if (item.hasSpeakers) {
                     expect(lines.length).toBeGreaterThan(1);
