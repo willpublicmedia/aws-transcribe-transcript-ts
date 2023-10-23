@@ -8,11 +8,12 @@ export default class TranscriptFormatter {
         let time = '0';
 
         if ('speaker_labels' in results && results.speaker_labels !== undefined) {
-            const speaker_start_times: { start_time: string, label: string }[] = [];
-            let speaker = 'spk_1';
-            let recent_speaker = 'spk_1';
-
             const labels = results.speaker_labels?.segments;
+
+            let speaker = labels[0].speaker_label ?? 'spk_0';
+            let recent_speaker = speaker;
+
+            const speaker_start_times: { start_time: string, label: string }[] = [];
             labels.forEach(label => {
                 label.items.forEach(item => {
                     speaker_start_times.push({

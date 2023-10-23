@@ -36,6 +36,7 @@ test('formatter splits on speakers', async () => {
 
                 const expectedEmpty = '[0] spk_1: '
 
+                console.debug(transcript);
                 if (item.hasSpeakers) {
                     expect(lines.length).toBeGreaterThan(1);
                     expect(firstline).not.toBe(expectedEmpty);
