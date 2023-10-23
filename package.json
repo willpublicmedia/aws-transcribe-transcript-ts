@@ -2,7 +2,7 @@
   "name": "aws-transcribe-transcript-ts",
   "version": "0.0.0",
   "description": "A typescript port of purdy/aws-transcribe-transcript",
-  "main": "index.js",
+  "main": "transcript-formatter.js",
   "scripts": {
     "test": "jest"
   },
