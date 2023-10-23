@@ -20,7 +20,7 @@ test('formatter completes data processing', async () => {
     )
 });
 
-test('first formatted line should not be empty', async () => {
+test('formatter splits on speakers', async () => {
     const builder = new DataBuilder();
     const items = builder.GenerateTestData();
     await Promise.all(
@@ -31,15 +31,20 @@ test('first formatted line should not be empty', async () => {
                 const formatter = new TranscriptFormatter();
                 const transcript = formatter.format(data);
 
-                const lines = transcript.split('\n');
-                const firstLine = lines[0];
+                const lines = transcript.split(/\r?\n|\r|\n/g);
+                const firstline = lines[0];
 
                 const expectedEmpty = '[0] spk_1: ,'
-                const actualEmpty = firstLine.startsWith(expectedEmpty);
 
-                expect(lines.length).toBeGreaterThanOrEqual(item.minimumLines);
-                expect(actualEmpty).toBe(false);
+                if (item.hasSpeakers) {
+                    expect(lines.length).toBeGreaterThan(1);
+                    expect(firstline).not.toBe(expectedEmpty);
+                } else {
+                    const unformattedText = data.results.transcripts[0].transcript;
+                    expect(lines.length).toEqual(1);
+                    expect(firstline).toBe(unformattedText);
+                }
             }
         )
-    )
+    );
 });
