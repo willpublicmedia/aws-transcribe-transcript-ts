@@ -1,21 +1,22 @@
-import { TranscribeJobOutput } from "./types/transcribe-job-output";
+import { TranscribeJobOutput, TranscribeJobResult } from "./types/transcribe-job-output";
+export { type TranscribeJobOutput, type TranscribeJobResult };
 
 export default class TranscriptFormatter {
     public format(data: TranscribeJobOutput): string {
         const results = data.results;
-        
+
         if ('speaker_labels' in results && results.speaker_labels !== undefined) {
             const labels = results.speaker_labels?.segments;
-            
+
             let speaker = labels[0].speaker_label ?? 'spk_0';
             let recent_speaker = speaker;
-            
+
             const speaker_start_times: { start_time: string, label: string }[] = this.findSpeakerStartTimes(labels);
-            
+
             let lines = [];
             let line = '';
             let time = '0';
-            
+
             const items = results.items;
             for (let i = 0; i < items.length; i++) {
                 const item = items[i];
