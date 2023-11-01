@@ -31,6 +31,9 @@
     "url": "https://github.com/willpublicmedia/aws-transcribe-transcript-ts/issues"
   },
   "homepage": "https://github.com/willpublicmedia/aws-transcribe-transcript-ts#readme",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "devDependencies": {
     "@babel/core": "^7.23.0",
     "@babel/preset-env": "^7.22.20",
