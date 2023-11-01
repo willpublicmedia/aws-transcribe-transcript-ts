@@ -1,5 +1,4 @@
-import { TranscribeJobOutput, TranscribeJobResult } from "./types/transcribe-job-output";
-export { type TranscribeJobOutput, type TranscribeJobResult };
+import { TranscribeJobOutput } from "./interfaces/transcribe-job-output";
 
 export default class TranscriptFormatter {
     public format(data: TranscribeJobOutput): string {
