@@ -1,5 +1,5 @@
 {
-  "name": "aws-transcribe-transcript-ts",
+  "name": "@willpublicmedia/aws-transcribe-transcript-ts",
   "version": "0.0.0",
   "description": "A typescript port of purdy/aws-transcribe-transcript",
   "scripts": {
