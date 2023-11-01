@@ -1,6 +1,6 @@
 {
   "name": "@willpublicmedia/aws-transcribe-transcript-ts",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A typescript port of purdy/aws-transcribe-transcript",
   "scripts": {
     "build": "tsc -p tsconfig.json",
@@ -10,14 +10,6 @@
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "import": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      }
-    }
-  },
   "files": [
     "dist"
   ],
