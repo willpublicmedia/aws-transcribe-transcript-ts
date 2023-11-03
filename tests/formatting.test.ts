@@ -2,7 +2,7 @@ import { test, expect } from '@jest/globals';
 import * as fs from 'fs/promises';
 import TranscriptFormatter from '../src/transcript-formatter';
 import { type TranscribeJobOutput } from '../src/interfaces/transcribe-job-output';
-import DataBuilder from './data-builder';
+import DataBuilder, { SpeakerStatus } from './data-builder';
 
 /**
  * @internal
@@ -58,5 +58,13 @@ test('formatter splits on speakers', async () => {
 
 test('formatter orders speakers correctly', async () => {
     const builder = new DataBuilder();
-    const items = builder.GenerateTestData();
+    const items = builder.GenerateTestData(SpeakerStatus.HasSpeakers);
+
+    await Promise.all(
+        items.map(
+            async item => {
+                expect(1).toEqual(2);
+            }
+        )
+    );
 })
