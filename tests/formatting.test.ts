@@ -72,15 +72,25 @@ test('formatter returns unformatted text if no speakers', async () => {
     );
 })
 
-// test('formatter orders speakers correctly', async () => {
-//     const builder = new DataBuilder();
-//     const items = builder.GenerateTestData(SpeakerStatus.HasSpeakers);
+test('first formatted line starts at 0', async () => {
+    const builder = new DataBuilder();
+    const items = builder.GenerateTestData(SpeakerStatus.HasSpeakers);
 
-//     await Promise.all(
-//         items.map(
-//             async item => {
-//                 expect(1).toEqual(2);
-//             }
-//         )
-//     );
-// })
+    await Promise.all(
+        items.map(
+            async item => {
+                const content = await fs.readFile(item.file, { encoding: 'utf-8' });
+                const data: TranscribeJobOutput = await JSON.parse(content);
+                const formatter = new TranscriptFormatter();
+                const transcript = formatter.format(data);
+
+                const lines = transcript.split(/\r?\n|\r|\n/g);
+                const firstline = lines[0];
+
+                const expectedStart = '[00:00:00] spk_0: ';
+                const actualStart = firstline.match(/\[\d{2}\:\d{2}\:\d{2}\] spk_\d\:\ /)?.[0] ?? '';
+                expect(actualStart).toBe(expectedStart);
+            }
+        )
+    );
+})
