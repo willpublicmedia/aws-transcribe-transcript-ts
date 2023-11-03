@@ -94,3 +94,25 @@ test('first formatted line starts at 0', async () => {
         )
     );
 })
+
+test('timestamps sorted in ascending order', async () => {
+    const builder = new DataBuilder();
+    const items = builder.GenerateTestData(SpeakerStatus.HasSpeakers);
+
+    await Promise.all(
+        items.map(
+            async item => {
+                const content = await fs.readFile(item.file, { encoding: 'utf-8' });
+                const data: TranscribeJobOutput = await JSON.parse(content);
+                const formatter = new TranscriptFormatter();
+                const transcript = formatter.format(data);
+
+                const lines = transcript.split(/\r?\n|\r|\n/g);
+                const timestamps = lines.filter(l => l.match(/\[\d{2}\:\d{2}\:\d{2}\]/)?.[0] ?? '')
+
+                const isAscending = timestamps.slice(1).every((e,i) => e > timestamps[i]);
+                expect(isAscending).toBe(true);
+            }
+        )
+    );
+})
