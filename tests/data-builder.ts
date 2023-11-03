@@ -35,9 +35,9 @@ export default class DataBuilder {
             case SpeakerStatus.All:
                 return this.testData;
             case SpeakerStatus.HasSpeakers:
-                return this.testData.filter(i => i.hasSpeakers == true);
+                return this.testData.filter(i => i.hasSpeakers === true);
             case SpeakerStatus.NoSpeakers:
-                return this.testData.filter(i => i.hasSpeakers == false);
+                return this.testData.filter(i => i.hasSpeakers === false);
         }
     }
 }

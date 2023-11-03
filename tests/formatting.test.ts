@@ -28,7 +28,7 @@ test('formatter completes data processing', async () => {
  */
 test('formatter splits on speakers', async () => {
     const builder = new DataBuilder();
-    const items = builder.GenerateTestData();
+    const items = builder.GenerateTestData(SpeakerStatus.HasSpeakers);
     await Promise.all(
         items.map(
             async item => {
@@ -42,29 +42,45 @@ test('formatter splits on speakers', async () => {
 
                 const expectedEmpty = '[0] spk_1: '
 
-                console.debug(transcript);
-                if (item.hasSpeakers) {
-                    expect(lines.length).toBeGreaterThan(1);
-                    expect(firstline).not.toBe(expectedEmpty);
-                } else {
-                    const unformattedText = data.results.transcripts[0].transcript;
-                    expect(lines.length).toEqual(1);
-                    expect(firstline).toBe(unformattedText);
-                }
+                // console.debug(transcript);
+                expect(lines.length).toBeGreaterThan(1);
+                expect(firstline).not.toBe(expectedEmpty);
             }
         )
     );
 });
 
-test('formatter orders speakers correctly', async () => {
+test('formatter returns unformatted text if no speakers', async () => {
     const builder = new DataBuilder();
-    const items = builder.GenerateTestData(SpeakerStatus.HasSpeakers);
-
+    const items = builder.GenerateTestData(SpeakerStatus.NoSpeakers);
     await Promise.all(
         items.map(
             async item => {
-                expect(1).toEqual(2);
+                const content = await fs.readFile(item.file, { encoding: 'utf-8' });
+                const data: TranscribeJobOutput = await JSON.parse(content);
+                const formatter = new TranscriptFormatter();
+                const transcript = formatter.format(data);
+
+                const lines = transcript.split(/\r?\n|\r|\n/g);
+                const firstline = lines[0];
+                const unformattedText = data.results.transcripts[0].transcript;
+
+                expect(lines.length).toBe(1);
+                expect(firstline).toBe(unformattedText);
             }
         )
     );
 })
+
+// test('formatter orders speakers correctly', async () => {
+//     const builder = new DataBuilder();
+//     const items = builder.GenerateTestData(SpeakerStatus.HasSpeakers);
+
+//     await Promise.all(
+//         items.map(
+//             async item => {
+//                 expect(1).toEqual(2);
+//             }
+//         )
+//     );
+// })
