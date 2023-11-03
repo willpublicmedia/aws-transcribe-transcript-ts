@@ -55,3 +55,8 @@ test('formatter splits on speakers', async () => {
         )
     );
 });
+
+test('formatter orders speakers correctly', async () => {
+    const builder = new DataBuilder();
+    const items = builder.GenerateTestData();
+})
