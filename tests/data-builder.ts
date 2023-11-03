@@ -30,7 +30,14 @@ export default class DataBuilder {
         { file: path.join(this.dataDir, 'newscast.2023-11-02.0804.incorrect-speaker-order.speakers.json'), hasSpeakers: true }
     ]
 
-    public GenerateTestData(): TestData[] {
-        return this.testData;
+    public GenerateTestData(speakerStatus: SpeakerStatus = SpeakerStatus.All): TestData[] {
+        switch (speakerStatus) {
+            case SpeakerStatus.All:
+                return this.testData;
+            case SpeakerStatus.HasSpeakers:
+                return this.testData.filter(i => i.hasSpeakers == true);
+            case SpeakerStatus.NoSpeakers:
+                return this.testData.filter(i => i.hasSpeakers == false);
+        }
     }
 }
