@@ -11,6 +11,15 @@ export interface TestData {
 /**
  * @internal
  */
+export enum SpeakerStatus {
+    All,
+    HasSpeakers,
+    NoSpeakers
+}
+
+/**
+ * @internal
+ */
 export default class DataBuilder {
     private readonly dataDir = path.join(__dirname, 'data');
 
