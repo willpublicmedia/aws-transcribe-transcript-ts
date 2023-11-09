@@ -1,4 +1,4 @@
-import { TranscribeJobOutput } from "./interfaces/transcribe-job-output";
+import { type TranscribeJobOutput } from "./interfaces/transcribe-job-output.js";
 
 export default class TranscriptFormatter {
     public format(data: TranscribeJobOutput): string {
