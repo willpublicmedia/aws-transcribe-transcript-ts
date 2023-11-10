@@ -1,6 +1,6 @@
 import { test, expect } from '@jest/globals';
 import * as fs from 'fs/promises';
-import TranscriptFormatter from '../src/transcript-formatter';
+import { TranscriptFormatter } from '../src/tools/transcript-formatter';
 import { type TranscribeJobOutput } from '../src/interfaces/transcribe-job-output';
 import DataBuilder, { SpeakerStatus } from './data-builder';
 
@@ -110,7 +110,7 @@ test('timestamps sorted in ascending order', async () => {
                 const lines = transcript.split(/\r?\n|\r|\n/g);
                 const timestamps = lines.filter(l => l.match(/\[\d{2}\:\d{2}\:\d{2}\]/)?.[0] ?? '')
 
-                const isAscending = timestamps.slice(1).every((e,i) => e > timestamps[i]);
+                const isAscending = timestamps.slice(1).every((e, i) => e > timestamps[i]);
                 expect(isAscending).toBe(true);
             }
         )

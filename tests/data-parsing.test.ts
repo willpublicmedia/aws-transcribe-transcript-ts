@@ -2,7 +2,7 @@ import { test, expect } from '@jest/globals';
 import * as fsPromises from 'fs/promises';
 import { type TranscribeJobOutput, type TranscribeJobResult } from '../src/interfaces/transcribe-job-output';
 import DataBuilder from './data-builder';
-import TranscriptFormatter from '../src/transcript-formatter';
+import { TranscriptFormatter } from '../src/tools/transcript-formatter';
 
 /**
  * @internal

@@ -165,7 +165,11 @@ const config = {
   // testRunner: "jest-circus/runner",
 
   // A map from regular expressions to paths to transformers
-  transform: { '^.+\\.ts?$': 'ts-jest' },
+  transform: {
+    '^.+\\.ts?$': [
+      'ts-jest', { tsconfig: './tsconfig.jest.json' } // see https://github.com/kulshekhar/ts-jest/issues/4081
+    ]
+  },
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
   // transformIgnorePatterns: [
@@ -186,5 +190,5 @@ const config = {
   // watchman: true,
 };
 
-module.exports = config;
+export default config;
 

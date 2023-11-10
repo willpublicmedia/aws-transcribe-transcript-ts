@@ -14,8 +14,7 @@
     "dist"
   ],
   "exports": {
-    "import": "./dist/index.js",
-    "require": "./index.cjs"
+    "import": "./dist/index.js"
   },
   "type": "module",
   "repository": {
