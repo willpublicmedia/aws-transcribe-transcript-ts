@@ -1,6 +1,6 @@
 import { type TranscribeJobOutput } from "./interfaces/transcribe-job-output.js";
 
-export default class TranscriptFormatter {
+export class TranscriptFormatter {
     public format(data: TranscribeJobOutput): string {
         const results = data.results;
 
