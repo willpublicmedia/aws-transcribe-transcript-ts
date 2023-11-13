@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- restructure project directory and exports
+
 ## 1.0.2
 
 - correct timestamp sort order
