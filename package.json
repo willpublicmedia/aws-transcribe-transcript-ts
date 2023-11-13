@@ -1,6 +1,6 @@
 {
   "name": "@willpublicmedia/aws-transcribe-transcript-ts",
-  "version": "2.0.0-rc0",
+  "version": "2.0.0",
   "description": "A typescript port of purdy/aws-transcribe-transcript",
   "scripts": {
     "build": "tsc -p tsconfig.json",
