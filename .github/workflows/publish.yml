@@ -31,8 +31,6 @@ jobs:
         run: npm test
         
       - name: Publish
-        # don't publish release candidates
-        if: ${{ ! contains(github.ref_name, '-rc') }}
         uses: JS-DevTools/npm-publish@v3
         with:
           token: ${{ github.token }}
