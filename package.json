@@ -14,7 +14,17 @@
     "dist"
   ],
   "exports": {
-    "import": "./dist/index.js"
+    ".": {
+      "import": "./dist/index.js",
+      "node": "./dist/index.js"
+    },
+    "./*": {
+      "import": "./dist/index.js",
+      "node": "./dist/index.js"
+    },
+    "./dist/*": {
+      "import": "./dist/*"
+    }
   },
   "type": "module",
   "repository": {
