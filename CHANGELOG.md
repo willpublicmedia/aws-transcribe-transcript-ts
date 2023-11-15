@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.1
+
+- split esm and commonjs distributions
+
 ## 2.0.0
 
 - restructure project directory and exports
