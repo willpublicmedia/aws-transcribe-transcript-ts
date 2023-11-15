@@ -1,32 +1,38 @@
 {
   "name": "@willpublicmedia/aws-transcribe-transcript-ts",
-  "version": "2.0.0",
+  "version": "2.0.1-alpha0",
   "description": "A typescript port of purdy/aws-transcribe-transcript",
   "scripts": {
-    "build": "tsc -p tsconfig.mjs.json && tsc -p tsconfig.cjs.json",
+    "build": "npm run build:mjs && npm run build:cjs",
+    "build:cjs": "tsc -p tsconfig.cjs.json && npm run fixup:cjs",
+    "build:mjs": "tsc -p tsconfig.mjs.json && npm run fixup:mjs",
     "clean": "rm -rf ./dist/",
+    "fixup:cjs": "echo { \"type\": \"commonjs\" } >dist/cjs/package.json",
+    "fixup:mjs": "echo { \"type\": \"module\" } >dist/mjs/package.json",
     "test": "jest"
   },
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/mjs/index.js",
+  "types": "./dist/mjs/index.d.ts",
   "files": [
     "dist"
   ],
   "exports": {
     ".": {
-      "import": "./dist/index.js",
-      "node": "./dist/index.js"
+      "import": "./dist/mjs/index.js",
+      "require": "./dist/cjs/index.js",
+      "node": "./dist/mjs/index.js"
     },
     "./*": {
-      "import": "./dist/index.js",
-      "node": "./dist/index.js"
+      "import": "./dist/mjs/index.js",
+      "require": "./dist/cjs/index.js",
+      "node": "./dist/mjs/index.js"
     },
     "./dist/*": {
-      "import": "./dist/*"
+      "import": "./dist/mjs/*",
+      "require": "./dist/cjs/*"
     }
   },
-  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/willpublicmedia/aws-transcribe-transcript-ts.git"
