@@ -3,7 +3,7 @@
   "version": "2.0.0",
   "description": "A typescript port of purdy/aws-transcribe-transcript",
   "scripts": {
-    "build": "tsc -p tsconfig.json",
+    "build": "tsc -p tsconfig.mjs.json && tsc -p tsconfig.cjs.json",
     "clean": "rm -rf ./dist/",
     "test": "jest"
   },

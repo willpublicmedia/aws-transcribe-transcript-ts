@@ -4,19 +4,17 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "declaration": true,
-    "inlineSources": true,
+    "inlineSources": false,
     "declarationMap": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
-    "moduleResolution": "Node16",
-    "resolveJsonModule": true,
+    "noFallthroughCasesInSwitch": true,
+    "pretty": true,
+    "rootDir": "src",
     "skipLibCheck": true,
-    "sourceMap": true,
     "strict": true,
-    "verbatimModuleSyntax": true,
-    "target": "es2018",
-    "module": "Node16",
-    "outDir": "./dist"
+    "traceResolution": false,
+    "types": ["node", "jest"]
   }
 }
