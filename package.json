@@ -1,14 +1,13 @@
 {
   "name": "@willpublicmedia/aws-transcribe-transcript-ts",
-  "version": "2.0.1-rc0",
+  "version": "2.0.1-rc1",
   "description": "A typescript port of purdy/aws-transcribe-transcript",
   "scripts": {
     "build": "npm run build:mjs && npm run build:cjs",
-    "build:cjs": "tsc -p tsconfig.cjs.json && npm run fixup:cjs",
-    "build:mjs": "tsc -p tsconfig.mjs.json && npm run fixup:mjs",
+    "build:cjs": "tsc -p tsconfig.cjs.json && npm run fixup",
+    "build:mjs": "tsc -p tsconfig.mjs.json && npm run fixup",
     "clean": "rm -rf ./dist/",
-    "fixup:cjs": "echo { \"type\": \"commonjs\" } >dist/cjs/package.json",
-    "fixup:mjs": "echo { \"type\": \"module\" } >dist/mjs/package.json",
+    "fixup": "./fixup.sh",
     "test": "jest"
   },
   "main": "./dist/cjs/index.js",
