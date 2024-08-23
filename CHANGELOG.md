@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.2
+
+- update dependencies
+
 ## 2.0.1
 
 - split esm and commonjs distributions
