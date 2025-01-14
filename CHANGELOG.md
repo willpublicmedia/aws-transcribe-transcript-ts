@@ -1,5 +1,17 @@
 # Changelog
 
+## 2.0.5
+
+- update dependencies
+
+## 2.0.4
+
+- update dependencies
+
+## 2.0.3
+
+- update dependencies
+
 ## 2.0.2
 
 - update dependencies
