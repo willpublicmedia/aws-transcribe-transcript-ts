@@ -1,0 +1,15 @@
+{
+    "jobName": "empty-transcribe-1234567890",
+    "accountId": "111111111111",
+    "status": "COMPLETED",
+    "results": {
+        "transcripts": [
+            {
+                "transcript": ""
+            }
+        ],
+        "speaker_labels": null,
+        "items": [],
+        "audio_segments": []
+    }
+}

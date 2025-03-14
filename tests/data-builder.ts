@@ -27,7 +27,8 @@ export default class DataBuilder {
         { file: path.join(this.dataDir, 'newscast-transcript.no-speakers.json'), hasSpeakers: false },
         { file: path.join(this.dataDir, 'newscast-transcript.speakers.json'), hasSpeakers: true },
         { file: path.join(this.dataDir, 'newscast-transcript.2023-10-23.0704.speakers.json'), hasSpeakers: true },
-        { file: path.join(this.dataDir, 'newscast.2023-11-02.0804.incorrect-speaker-order.speakers.json'), hasSpeakers: true }
+        { file: path.join(this.dataDir, 'newscast.2023-11-02.0804.incorrect-speaker-order.speakers.json'), hasSpeakers: true },
+        { file: path.join(this.dataDir, 'transcript.silent-audio.json'), hasSpeakers: false }
     ]
 
     public GenerateTestData(speakerStatus: SpeakerStatus = SpeakerStatus.All): TestData[] {
