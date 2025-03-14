@@ -4,7 +4,7 @@ export class TranscriptFormatter {
     public format(data: TranscribeJobOutput): string {
         const results = data.results;
 
-        if ('speaker_labels' in results && results.speaker_labels !== undefined) {
+        if ('speaker_labels' in results && results.speaker_labels !== undefined && results.speaker_labels !== null) {
             const labels = results.speaker_labels?.segments;
 
             let speaker = labels[0].speaker_label ?? 'spk_0';
