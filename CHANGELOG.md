@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.6
+
+- handle empty transcripts
+
 ## 2.0.5
 
 - update dependencies
